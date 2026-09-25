@@ -7,6 +7,7 @@ from datetime import datetime, timezone
 from typing import Iterator
 
 from app.config import settings
+from app.pottery.schema import POTTERY_SCHEMA
 
 _local = threading.local()
 
@@ -79,7 +80,7 @@ CREATE TABLE IF NOT EXISTS jobs (
 );
 CREATE INDEX IF NOT EXISTS idx_jobs_status ON jobs(status,created_at,id);
 CREATE INDEX IF NOT EXISTS idx_audit_project ON audit_events(project_id,created_at,id);
-"""
+""" + POTTERY_SCHEMA
 
 
 def now() -> str:
